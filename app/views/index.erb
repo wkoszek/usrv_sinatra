@@ -1,0 +1,10 @@
+<h2>sample</h2>
+
+<table><tbody>
+<% ENV.keys.each do |name| %>
+  <tr>
+    <td><%= name %></td>
+    <td><%= ENV[name] %></td>
+  </tr>
+<% end %>
+</tbody></table>
