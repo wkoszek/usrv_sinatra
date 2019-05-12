@@ -1,19 +1,17 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.04
 
 MAINTAINER Wojciech Adam Koszek "wojciech@koszek.com"
 
-WORKDIR /app
+WORKDIR /src
+ADD ./Gemfile /src/Gemfile
+ADD ./Gemfile.lock /src/Gemfile.lock
+ADD ./vendor /src/vendor
 
-ADD Gemfile /usr/src/Gemfile
-#ADD Gemfile.lock /usr/src/Gemfile.lock
-ADD . /app
-
-RUN \
-	apt-get update && \
-	apt-get -y install ruby gcc g++ make ruby-dev ruby-bundler && \
+RUN apt-get update && \
+	apt-get -y install ruby ruby-bundler && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-	bundle install --without development test && \
+	bundle install --deployment & \
 	mkdir tmp
 
 CMD bundle exec unicorn -c /app/unicorn.rb
