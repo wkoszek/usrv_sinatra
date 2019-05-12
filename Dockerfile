@@ -11,7 +11,6 @@ RUN apt-get update && \
 	apt-get -y install ruby ruby-bundler && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-	bundle install --deployment & \
-	mkdir tmp
+	bundle install --deployment
 
 CMD bundle exec unicorn -c /app/unicorn.rb
