@@ -13,4 +13,4 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 	bundle install --deployment
 
-CMD bundle exec unicorn -c /app/unicorn.rb
+CMD bundle exec unicorn -c /app/`cat /app/.app/name`.rb

@@ -1,0 +1,1 @@
+/root/containter_ctl.sh start sin -p 8080:8080 -v /home/ubuntu/apps/usrv_sinatra:/app" with timeout 60 seconds
